@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Networking;
 
 public class PlayerController : NetworkBehaviour
@@ -11,9 +10,11 @@ public class PlayerController : NetworkBehaviour
     public float maxLookAngle = 90f;
     public float moveSpeed = 10f;
     public float maxVelocityChange = 7f;
+    public LevelSelectionMenu levelSelectionMenu;
 
     private float yaw = 0.0f;
     private float pitch = 0.0f;
+    private bool isMenuActive = false;
 
     // Variable pour indiquer si le joueur est le docteur
     [SyncVar(hook = nameof(OnIsDoctorChanged))]
@@ -25,19 +26,20 @@ public class PlayerController : NetworkBehaviour
     [SyncVar(hook = nameof(OnCameraRotationChanged))]
     private float cameraYaw = 0f;
 
-    private void OnCameraRotationChanged(float newRotation)
+    [SyncVar(hook = nameof(OnPlayerPositionChanged))]
+    public Vector3 playerPosition = Vector3.zero;
+
+    public override void OnStartLocalPlayer()
     {
-        // Mise à jour de la rotation de la caméra sur tous les clients
-        if (!isLocalPlayer)
+        // Appeler la méthode SetLocalPlayer du LevelSelectionMenu pour définir la référence au PlayerController local
+        GameObject levelSelectionMenuObj = GameObject.FindGameObjectWithTag("LevelSelectionMenu");
+        if (levelSelectionMenuObj != null)
         {
-            pitch = cameraPitch;
-            yaw = cameraYaw;
-            transform.localEulerAngles = new Vector3(0, yaw, 0);
-            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+            levelSelectionMenu = levelSelectionMenuObj.GetComponent<LevelSelectionMenu>();
+            levelSelectionMenu.SetLocalPlayer(this);
         }
     }
 
-    // Fonction appelée lorsque la variable isDoctor est changée
     private void OnIsDoctorChanged(bool newIsDoctor)
     {
         // Implémentez ici le comportement en fonction du rôle du joueur (docteur ou patient)
@@ -56,6 +58,27 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
+    private void OnCameraRotationChanged(float newRotation)
+    {
+        // Mise à jour de la rotation de la caméra sur tous les clients
+        if (!isLocalPlayer)
+        {
+            pitch = cameraPitch;
+            yaw = cameraYaw;
+            transform.localEulerAngles = new Vector3(0, yaw, 0);
+            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+        }
+    }
+
+    private void OnPlayerPositionChanged(Vector3 newPosition)
+    {
+        // Mise à jour de la position du joueur sur les clients
+        if (!isLocalPlayer)
+        {
+            transform.position = newPosition;
+        }
+    }
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -64,20 +87,35 @@ public class PlayerController : NetworkBehaviour
 
     void Update()
     {
-        yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
-        pitch = pitch - Input.GetAxis("Mouse Y") * mouseSensitivity;
+        isMenuActive = levelSelectionMenu != null && levelSelectionMenu.isActive;
 
-        pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
-
-        transform.localEulerAngles = new Vector3(0, yaw, 0);
-        playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
-
-        // Ajoutez cette vérification pour mettre à jour les rotations uniquement sur le joueur local
-        if (isLocalPlayer)
+        if (isDoctor)
         {
-            // Envoyer les rotations de la caméra au serveur
-            CmdSyncCameraRotations(pitch, yaw);
+            Cursor.visible = isMenuActive;
+            Cursor.lockState = levelSelectionMenu.isActive ? CursorLockMode.None : CursorLockMode.Locked;
         }
+        
+        // Mettre à jour la rotation de la caméra uniquement si le menu n'est pas actif
+        if (!isMenuActive)
+        {
+            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
+            pitch = pitch - Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
+
+            transform.localEulerAngles = new Vector3(0, yaw, 0);
+            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+
+            if (isLocalPlayer)
+            {
+                // Envoyer les rotations de la caméra au serveur
+                CmdSyncCameraRotations(pitch, yaw);
+
+                // Envoyer la position du joueur au serveur
+                CmdSyncPlayerPosition(transform.position);
+            }
+        }
+        
     }
 
     // Fonction de synchronisation des rotations de la caméra vers le serveur
@@ -86,6 +124,13 @@ public class PlayerController : NetworkBehaviour
     {
         cameraPitch = pitch;
         cameraYaw = yaw;
+    }
+
+    // Fonction de synchronisation de la position du joueur vers le serveur
+    [Command]
+    void CmdSyncPlayerPosition(Vector3 position)
+    {
+        playerPosition = position;
     }
 
     private void FixedUpdate()
@@ -100,12 +145,26 @@ public class PlayerController : NetworkBehaviour
         rigidBody.AddForce(velocityChange, ForceMode.VelocityChange);
 
         Vector3 gravity = new Vector3(0, -9.81f, 0);
-        float gravityMultiplayer = 10f;
-        gravity *= gravityMultiplayer;
+        float gravityMultiplier = 10f;
+        gravity *= gravityMultiplier;
 
         if (rigidBody.velocity.y < 0)
         {
             rigidBody.AddForce(gravity, ForceMode.Force);
         }
+    }
+
+    // Fonction pour mettre à jour la caméra du docteur avec celle du patient
+    public void UpdateDoctorCamera(Vector3 patientPosition)
+    {
+        // Calculer la direction du patient par rapport au docteur
+        Vector3 direction = patientPosition - transform.position;
+        direction.y = 0f;
+
+        // Calculer la rotation à appliquer à la caméra du docteur pour regarder vers le patient
+        Quaternion newRotation = Quaternion.LookRotation(direction);
+
+        // Mettre à jour la rotation de la caméra du docteur
+        playerCamera.transform.rotation = newRotation;
     }
 }
