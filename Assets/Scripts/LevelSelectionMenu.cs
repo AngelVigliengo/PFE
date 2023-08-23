@@ -11,10 +11,63 @@ public class LevelSelectionMenu : NetworkBehaviour
     public bool isActive = false;
     private PlayerController localPlayer;
 
-    public Dropdown arachnophobieButton;
+    public Material normalSkybox;
+    public Material arachnophobieSkybox;
 
-    // Référence au préfab du patient (assurez-vous de le définir dans l'inspecteur Unity)
+    public AudioSource normalAudio;
+    public AudioSource arachnophobie1Audio;
+    public AudioSource arachnophobie6Audio;
+
+    public Dropdown arachnophobieButton;
     public GameObject patientPrefab;
+
+
+    private void ChangeSkyboxAndAudio(Material skybox, AudioSource audio)
+    {
+        RenderSettings.skybox = skybox;
+
+        if (audio.isPlaying)
+        {
+            audio.Stop();
+        }
+        audio.Play();
+    }
+
+    public void SetNormalLevel()
+    {
+        ChangeSkyboxAndAudio(normalSkybox, normalAudio);
+    }
+
+    public void SetArachnophobieLevel1()
+    {
+        ChangeSkyboxAndAudio(arachnophobieSkybox, arachnophobie1Audio);
+    }
+
+    public void SetArachnophobieLevel6()
+    {
+        ChangeSkyboxAndAudio(arachnophobieSkybox, arachnophobie6Audio);
+    }
+
+    private void ResetAudioAndSkybox()
+    {
+        if (normalAudio.isPlaying)
+        {
+            normalAudio.Stop();
+        }
+
+        if (arachnophobie1Audio.isPlaying)
+        {
+            arachnophobie1Audio.Stop();
+        }
+
+        if(arachnophobie6Audio.isPlaying)
+        {
+            arachnophobie6Audio.Stop();
+        }
+
+        // Ajoute d'autres AudioSources ici si nécessaire
+    }
+
 
     // Méthode pour obtenir la référence au PlayerController local
     public void SetLocalPlayer(PlayerController player)
@@ -54,7 +107,7 @@ public class LevelSelectionMenu : NetworkBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        //ResetAudioAndSkybox();
     }
 
     // Update is called once per frame
@@ -78,17 +131,38 @@ public class LevelSelectionMenu : NetworkBehaviour
 
     public void AracnophobieLevelSelection()
     {
+
+        //ResetAudioAndSkybox();
+        //SetNormalLevel();
+
+        int selectedIndex = arachnophobieButton.value;
+        localPlayer.CmdChangeSkybox(selectedIndex);
+
         switch (arachnophobieButton.value)
         {
             case 0:
                 TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
-                Debug.Log("Spawn");
+                localPlayer.RpcChangeAudioIndex(0);
                 break;
             case 1:
-                TeleportPatientToPosition(new Vector3(5f, 3f, 3f));
+                TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
+                localPlayer.RpcChangeAudioIndex(1);
                 break;
             case 2:
-                TeleportPatientToPosition(new Vector3(13.5f, 8f, 3f));
+                TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
+                localPlayer.RpcChangeAudioIndex(0);
+                break;
+            case 3:
+                TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
+                localPlayer.RpcChangeAudioIndex(0);
+                break;
+            case 4:
+                TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
+                localPlayer.RpcChangeAudioIndex(0);
+                break;
+            case 5:
+                TeleportPatientToPosition(new Vector3(13.5f, 09f, 3f));
+                localPlayer.RpcChangeAudioIndex(2);
                 break;
         }
     }

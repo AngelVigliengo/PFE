@@ -16,6 +16,11 @@ public class PlayerController : NetworkBehaviour
     private float pitch = 0.0f;
     private bool isMenuActive = false;
 
+    public Material normalSkybox;
+    public Material arachnophobieSkybox;
+
+    public AudioSource[] AracnoAudioSources;
+
     // Variable pour indiquer si le joueur est le docteur
     [SyncVar(hook = nameof(OnIsDoctorChanged))]
     public bool isDoctor = false;
@@ -28,6 +33,71 @@ public class PlayerController : NetworkBehaviour
 
     [SyncVar(hook = nameof(OnPlayerPositionChanged))]
     public Vector3 playerPosition = Vector3.zero;
+
+    [Command]
+    public void CmdChangeSkybox(int skyboxIndex)
+    {
+        RpcChangeSkybox(skyboxIndex);
+    }
+
+    [ClientRpc]
+    public void RpcChangeSkybox(int skyboxIndex)
+    {
+        ChangeSkyboxByIndex(skyboxIndex);
+    }
+
+    // Fonction de synchronisation des changements d'audio vers le serveur
+    [Command]
+    public void CmdSyncAudioIndex(int audioIndex)
+    {
+        // Appeler la fonction sur tous les clients pour changer l'audio
+        RpcChangeAudioIndex(audioIndex);
+    }
+
+    // Fonction RPC pour synchroniser les changements d'audio sur tous les clients
+    [ClientRpc]
+    public void RpcChangeAudioIndex(int audioIndex)
+    {
+        ChangeAudioByIndex(audioIndex);
+    }
+
+    void ChangeSkyboxByIndex(int skyboxIndex)
+    {
+        Material newSkyboxMaterial = null;
+
+        switch (skyboxIndex)
+        {
+            case 0:
+                newSkyboxMaterial = normalSkybox;
+                break;
+            case 1:
+                newSkyboxMaterial = arachnophobieSkybox;
+                break;
+                // Ajoute d'autres cas pour les autres niveaux si nécessaire
+        }
+
+        if (newSkyboxMaterial != null)
+        {
+            RenderSettings.skybox = newSkyboxMaterial;
+        }
+    }
+
+    void ChangeAudioByIndex(int audioIndex)
+    {
+        foreach (AudioSource audioSource in GetComponentsInChildren<AudioSource>())
+        {
+            audioSource.Stop();
+            audioSource.gameObject.SetActive(false);
+        }
+
+        if (audioIndex >= 0 && audioIndex < AracnoAudioSources.Length)
+        {
+            AudioSource selectedAudio = AracnoAudioSources[audioIndex];
+            selectedAudio.gameObject.SetActive(true);
+            selectedAudio.Play();
+        }
+    }
+
 
     public override void OnStartLocalPlayer()
     {
@@ -83,6 +153,7 @@ public class PlayerController : NetworkBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         rigidBody = GetComponent<Rigidbody>();
+        ChangeAudioByIndex(0);
     }
 
     void Update()

@@ -1441,7 +1441,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Panel: {fileID: 4425462005110282303, guid: 349eb749096d9e04086e926ec241d477, type: 3}
   isActive: 0
-  arachnophobieButton: {fileID: 0}
+  normalSkybox: {fileID: 2100000, guid: cbfdbfbcd7839d14ab1a709b0c46c09a, type: 2}
+  arachnophobieSkybox: {fileID: 2100000, guid: 553b7b4bd3d864441bcaf8bba52e31c7, type: 2}
+  normalAudio: {fileID: 0}
+  arachnophobie1Audio: {fileID: 0}
+  arachnophobie6Audio: {fileID: 0}
+  arachnophobieButton: {fileID: 4395686406520961800}
   patientPrefab: {fileID: 2897088907228346532, guid: d8fa150fcf57a7e4ca6d941db0ff6a09,
     type: 3}
 --- !u!1 &8933567911505722853
@@ -1576,9 +1581,26 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Level 3
       m_Image: {fileID: 0}
+    - m_Text: Level 4
+      m_Image: {fileID: 0}
+    - m_Text: Level 5
+      m_Image: {fileID: 0}
+    - m_Text: Level 6
+      m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!1 &8979801854064468239
 GameObject:
