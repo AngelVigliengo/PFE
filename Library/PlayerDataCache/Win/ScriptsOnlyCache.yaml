@@ -102,35 +102,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 12184}
     - Class: 114
-      Script: {instanceID: 12308}
+      Script: {instanceID: 12306}
     - Class: 114
-      Script: {instanceID: 12360}
+      Script: {instanceID: 12358}
     - Class: 114
-      Script: {instanceID: 12614}
+      Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 12828}
+      Script: {instanceID: 12826}
     - Class: 114
-      Script: {instanceID: 12898}
+      Script: {instanceID: 12896}
     - Class: 114
-      Script: {instanceID: 13106}
+      Script: {instanceID: 13104}
     - Class: 114
-      Script: {instanceID: 13230}
+      Script: {instanceID: 13228}
     - Class: 114
-      Script: {instanceID: 13252}
+      Script: {instanceID: 13250}
     - Class: 114
-      Script: {instanceID: 13510}
+      Script: {instanceID: 13508}
     - Class: 114
-      Script: {instanceID: 13596}
+      Script: {instanceID: 13594}
     - Class: 114
-      Script: {instanceID: 13626}
+      Script: {instanceID: 13624}
     - Class: 114
-      Script: {instanceID: 13838}
+      Script: {instanceID: 13836}
     - Class: 114
-      Script: {instanceID: 14066}
+      Script: {instanceID: 14064}
     - Class: 114
-      Script: {instanceID: 14126}
+      Script: {instanceID: 14124}
     - Class: 114
-      Script: {instanceID: 14148}
+      Script: {instanceID: 14146}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -590,12 +590,6 @@ ScriptsOnlyBuild:
     className: NetworkBehaviour
   - hash:
       serializedVersion: 2
-      Hash: 9f54e90afea28775ebea5ef289593867
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: Options
-  - hash:
-      serializedVersion: 2
       Hash: 6939772cb3ce775a8e8d99f332534491
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -614,7 +608,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: d73068cd8c931fe6835a1683e1d2d30f
+      Hash: 0f1b77f285afc1e4ef61001fb09d4a8c
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController

@@ -78,30 +78,33 @@ public class LevelSelectionMenu : NetworkBehaviour
     // Fonction de téléportation du patient vers une position donnée
     private void TeleportPatientToPosition(Vector3 position)
     {
-        // Assurez-vous que le patientPrefab est défini dans l'inspecteur Unity
-        if (patientPrefab != null)
-        {
-            // Recherchez le patient existant
-            GameObject currentPatient = GameObject.FindGameObjectWithTag("Player");
-            if (currentPatient != null)
+        /*// Recherchez le patient existant
+        GameObject currentPatient = GameObject.FindGameObjectWithTag("Player");
+        if (currentPatient != null)
+        {            
+
+            currentPatient.transform.position = position;
+
+            PlayerController patientController = currentPatient.GetComponent<PlayerController>();
+            patientController.capsuleCollider.enabled = false;
+            if (patientController != null)
             {
-                // Changez simplement la position du patient existant
-                currentPatient.transform.position = position;
-                Debug.Log("TP");
-                Debug.Log(currentPatient.transform.position);
+                patientController.CmdChangePlayerPosition(position);
             }
-        }
-        else
-        {
-            Debug.LogError("Le préfab du patient n'est pas défini dans le script LevelSelectionMenu.");
-        }
+
+            patientController.capsuleCollider.enabled =  true;
+        }*/
 
         GameObject currentDoctor = GameObject.FindGameObjectWithTag("GameController");
         if (currentDoctor != null)
         {
             currentDoctor.transform.position = position;
+            PlayerController doctorController = currentDoctor.GetComponent<PlayerController>();
+            if (doctorController != null)
+            {
+                doctorController.CmdChangePlayerPosition(position);
+            }
         }
-        
     }
 
     // Start is called before the first frame update

@@ -160,7 +160,6 @@ MonoBehaviour:
   - {fileID: 8281425030038612411}
   - {fileID: 8705011493272701}
   isDoctor: 1
-  playerPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &5995501759472976708
 MonoBehaviour:
   m_ObjectHideFlags: 0

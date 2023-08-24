@@ -57,7 +57,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\LevelSelectionMenu.cs" />
      <Compile Include="Assets\Scripts\NetworkManagerCustom.cs" />
-     <Compile Include="Assets\Scripts\Options.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Spectator.cs" />
      <None Include="Assets\Assets\TextMesh Pro\Shaders\TMPro.cginc" />

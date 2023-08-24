@@ -31,8 +31,20 @@ public class PlayerController : NetworkBehaviour
     [SyncVar(hook = nameof(OnCameraRotationChanged))]
     private float cameraYaw = 0f;
 
-    [SyncVar(hook = nameof(OnPlayerPositionChanged))]
-    public Vector3 playerPosition = Vector3.zero;
+    /*[SyncVar(hook = nameof(OnPlayerPositionChanged))]
+    public Vector3 playerPosition = Vector3.zero;*/
+
+    [Command]
+    public void CmdChangePlayerPosition(Vector3 position)
+    {
+        RpcChangePlayerPosition(position);
+    }
+
+    [ClientRpc]
+    public void RpcChangePlayerPosition(Vector3 position)
+    {
+        OnPlayerPositionChanged(position);
+    }
 
     [Command]
     public void CmdChangeSkybox(int skyboxIndex)
@@ -142,11 +154,7 @@ public class PlayerController : NetworkBehaviour
 
     private void OnPlayerPositionChanged(Vector3 newPosition)
     {
-        // Mise à jour de la position du joueur sur les clients
-        if (!isLocalPlayer)
-        {
-            transform.position = newPosition;
-        }
+        transform.position = newPosition;
     }
 
     void Start()
@@ -164,6 +172,14 @@ public class PlayerController : NetworkBehaviour
         {
             Cursor.visible = isMenuActive;
             Cursor.lockState = levelSelectionMenu.isActive ? CursorLockMode.None : CursorLockMode.Locked;
+        }
+        else
+        {
+            GameObject currentDoctor = GameObject.FindGameObjectWithTag("GameController");
+            if (currentDoctor != null)
+            {
+                transform.position = currentDoctor.transform.position;
+            }
         }
         
         // Mettre à jour la rotation de la caméra uniquement si le menu n'est pas actif
@@ -183,8 +199,9 @@ public class PlayerController : NetworkBehaviour
                 CmdSyncCameraRotations(pitch, yaw);
 
                 // Envoyer la position du joueur au serveur
-                CmdSyncPlayerPosition(transform.position);
+                //CmdChangePlayerPosition(transform.position);
             }
+
         }
         
     }
@@ -197,12 +214,12 @@ public class PlayerController : NetworkBehaviour
         cameraYaw = yaw;
     }
 
-    // Fonction de synchronisation de la position du joueur vers le serveur
+    /*
     [Command]
     void CmdSyncPlayerPosition(Vector3 position)
     {
         playerPosition = position;
-    }
+    }*/
 
     private void FixedUpdate()
     {
