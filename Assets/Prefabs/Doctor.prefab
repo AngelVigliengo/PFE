@@ -32,6 +32,8 @@ Transform:
   - {fileID: 510059369764937265}
   - {fileID: 6596853417977710370}
   - {fileID: 3978052780376673028}
+  - {fileID: 2477613984570986306}
+  - {fileID: 6509282451506632438}
   m_Father: {fileID: 5995501760482038909}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -153,12 +155,24 @@ MonoBehaviour:
   moveSpeed: 10
   maxVelocityChange: 7
   levelSelectionMenu: {fileID: 1150149639914607881}
-  normalSkybox: {fileID: 2100000, guid: cbfdbfbcd7839d14ab1a709b0c46c09a, type: 2}
-  arachnophobieSkybox: {fileID: 2100000, guid: e65fcd5cfe3b10548b3e9032524652fe, type: 2}
+  arachnophobieSkybox:
+  - {fileID: 2100000, guid: cbfdbfbcd7839d14ab1a709b0c46c09a, type: 2}
+  - {fileID: 2100000, guid: e65fcd5cfe3b10548b3e9032524652fe, type: 2}
+  acrophobiephobieSkybox:
+  - {fileID: 2100000, guid: cbfdbfbcd7839d14ab1a709b0c46c09a, type: 2}
+  - {fileID: 2100000, guid: 88c2e90dcdd6ae14da65de5d1959cda5, type: 2}
+  - {fileID: 2100000, guid: c123007d73e17f445b96b4f1d61e1b3e, type: 2}
+  ophiophobieSkybox:
+  - {fileID: 2100000, guid: cbfdbfbcd7839d14ab1a709b0c46c09a, type: 2}
   AracnoAudioSources:
   - {fileID: 2716065949519108082}
   - {fileID: 8281425030038612411}
   - {fileID: 8705011493272701}
+  AcrophobieAudioSources:
+  - {fileID: 2716065949519108082}
+  - {fileID: 3337709810699432441}
+  - {fileID: 2524802795237599237}
+  OphiophobieAudioSources: []
   isDoctor: 1
 --- !u!114 &5995501759472976708
 MonoBehaviour:
@@ -402,6 +416,87 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 296223455056744900}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2926547487869710593
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5995501760482038908}
+    m_Modifications:
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988705081419514344, guid: f617f0f959e88bd44bc4f79386308b55,
+        type: 3}
+      propertyPath: m_Name
+      value: Audio Source Acrophobie1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f617f0f959e88bd44bc4f79386308b55, type: 3}
+--- !u!4 &2477613984570986306 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 792474816185499203, guid: f617f0f959e88bd44bc4f79386308b55,
+    type: 3}
+  m_PrefabInstance: {fileID: 2926547487869710593}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &3337709810699432441 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 489979819608129784, guid: f617f0f959e88bd44bc4f79386308b55,
+    type: 3}
+  m_PrefabInstance: {fileID: 2926547487869710593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5131079943085565262
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -471,17 +566,98 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f5b76b0a439051458cceb80c672cf0c, type: 3}
+--- !u!82 &8281425030038612411 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3880073411531492597, guid: 9f5b76b0a439051458cceb80c672cf0c,
+    type: 3}
+  m_PrefabInstance: {fileID: 5131079943085565262}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6596853417977710370 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2069959551328526956, guid: 9f5b76b0a439051458cceb80c672cf0c,
     type: 3}
   m_PrefabInstance: {fileID: 5131079943085565262}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &8281425030038612411 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 3880073411531492597, guid: 9f5b76b0a439051458cceb80c672cf0c,
+--- !u!1001 &5237325000100185234
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5995501760482038908}
+    m_Modifications:
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7656309229558791863, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+        type: 3}
+      propertyPath: m_Name
+      value: Audio Source Acrophobie2
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7d12a8b3cff63b84f8a20f6320886bba, type: 3}
+--- !u!4 &6509282451506632438 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1367733847852192356, guid: 7d12a8b3cff63b84f8a20f6320886bba,
     type: 3}
-  m_PrefabInstance: {fileID: 5131079943085565262}
+  m_PrefabInstance: {fileID: 5237325000100185234}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &2524802795237599237 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7757258584201784471, guid: 7d12a8b3cff63b84f8a20f6320886bba,
+    type: 3}
+  m_PrefabInstance: {fileID: 5237325000100185234}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6101042781239459084
 PrefabInstance:
@@ -587,6 +763,21 @@ PrefabInstance:
       value: OphiophobieLevelSelection
       objectReference: {fileID: 0}
     - target: {fileID: 588025262096805297, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122909761417942204, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1150149639914607881}
+    - target: {fileID: 2122909761417942204, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AcrophobieLevelSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 2122909761417942204, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
@@ -828,6 +1019,11 @@ PrefabInstance:
       objectReference: {fileID: 3471363130974007814}
     - target: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
+      propertyPath: acrophobieButton
+      value: 
+      objectReference: {fileID: 9106278628247850099}
+    - target: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
       propertyPath: ophiophobieButton
       value: 
       objectReference: {fileID: 7727898612994880894}
@@ -841,11 +1037,46 @@ PrefabInstance:
       propertyPath: arachnophobieButton
       value: 
       objectReference: {fileID: 6779758550765183943}
+    - target: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: arachnophobieSkybox
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b383cddf28ed0f84ca2472ff14bdce4d, type: 3}
 --- !u!4 &4069811868720307149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6587912280393466626, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7139919566900517071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9106278628247850099 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2122909761417942204, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7139919566900517071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7727898612994880894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 588025262096805297, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7139919566900517071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &3471363130974007814 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5997340480375925449, guid: b383cddf28ed0f84ca2472ff14bdce4d,
     type: 3}
   m_PrefabInstance: {fileID: 7139919566900517071}
   m_PrefabAsset: {fileID: 0}
@@ -861,27 +1092,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1a3e9944aeb8344bb90127a76055ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &3471363130974007814 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5997340480375925449, guid: b383cddf28ed0f84ca2472ff14bdce4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7139919566900517071}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6779758550765183943 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
-    type: 3}
-  m_PrefabInstance: {fileID: 7139919566900517071}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7727898612994880894 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 588025262096805297, guid: b383cddf28ed0f84ca2472ff14bdce4d,
     type: 3}
   m_PrefabInstance: {fileID: 7139919566900517071}
   m_PrefabAsset: {fileID: 0}

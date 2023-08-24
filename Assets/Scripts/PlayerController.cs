@@ -16,10 +16,9 @@ public class PlayerController : NetworkBehaviour
     private float pitch = 0.0f;
     private bool isMenuActive = false;
 
-    public Material normalSkybox;
-    public Material arachnophobieSkybox;
-    public Material acrophobiephobiefloueSkybox;
-    public Material acrophobiephobieSkybox;
+    public Material[] arachnophobieSkybox;
+    public Material[] acrophobiephobieSkybox;
+    public Material[] ophiophobieSkybox;
 
     public AudioSource[] AracnoAudioSources;
     public AudioSource[] AcrophobieAudioSources;
@@ -51,15 +50,15 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
-    public void CmdChangeSkybox(int skyboxIndex)
+    public void CmdChangeSkybox(int skyboxIndex, int modePhobie)
     {
-        RpcChangeSkybox(skyboxIndex);
+        RpcChangeSkybox(skyboxIndex, modePhobie);
     }
 
     [ClientRpc]
-    public void RpcChangeSkybox(int skyboxIndex)
+    public void RpcChangeSkybox(int skyboxIndex, int modePhobie)
     {
-        ChangeSkyboxByIndex(skyboxIndex);
+        ChangeSkyboxByIndex(skyboxIndex, modePhobie);
     }
 
     // Fonction de synchronisation des changements d'audio vers le serveur
@@ -77,22 +76,24 @@ public class PlayerController : NetworkBehaviour
         ChangeAudioByIndex(audioIndex,modePhobie);
     }
 
-    void ChangeSkyboxByIndex(int skyboxIndex)
+    void ChangeSkyboxByIndex(int skyboxIndex, int modePhobie)
     {
         Material newSkyboxMaterial = null;
 
-        switch (skyboxIndex)
+        if (skyboxIndex >= 0)
         {
-            case 0:
-                newSkyboxMaterial = normalSkybox;
-                break;
-            case 1:
-                newSkyboxMaterial = arachnophobieSkybox;
-                break;
-            case 2:
-                newSkyboxMaterial = acrophobiephobieSkybox;
-                break;
-                // Ajoute d'autres cas pour les autres niveaux si nécessaire
+            switch (modePhobie)
+            {
+                case 0:
+                    newSkyboxMaterial = arachnophobieSkybox[skyboxIndex];
+                    break;
+                case 1:
+                    newSkyboxMaterial = acrophobiephobieSkybox[skyboxIndex];
+                    break;
+                case 2:
+                    newSkyboxMaterial = ophiophobieSkybox[skyboxIndex];
+                    break;
+            }
         }
 
         if (newSkyboxMaterial != null)
