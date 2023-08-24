@@ -18,8 +18,12 @@ public class PlayerController : NetworkBehaviour
 
     public Material normalSkybox;
     public Material arachnophobieSkybox;
+    public Material acrophobiephobiefloueSkybox;
+    public Material acrophobiephobieSkybox;
 
     public AudioSource[] AracnoAudioSources;
+    public AudioSource[] AcrophobieAudioSources;
+    public AudioSource[] OphiophobieAudioSources;
 
     // Variable pour indiquer si le joueur est le docteur
     [SyncVar(hook = nameof(OnIsDoctorChanged))]
@@ -60,17 +64,17 @@ public class PlayerController : NetworkBehaviour
 
     // Fonction de synchronisation des changements d'audio vers le serveur
     [Command]
-    public void CmdSyncAudioIndex(int audioIndex)
+    public void CmdSyncAudioIndex(int audioIndex, int modePhobie)
     {
         // Appeler la fonction sur tous les clients pour changer l'audio
-        RpcChangeAudioIndex(audioIndex);
+        RpcChangeAudioIndex(audioIndex, modePhobie);
     }
 
     // Fonction RPC pour synchroniser les changements d'audio sur tous les clients
     [ClientRpc]
-    public void RpcChangeAudioIndex(int audioIndex)
+    public void RpcChangeAudioIndex(int audioIndex, int modePhobie)
     {
-        ChangeAudioByIndex(audioIndex);
+        ChangeAudioByIndex(audioIndex,modePhobie);
     }
 
     void ChangeSkyboxByIndex(int skyboxIndex)
@@ -85,6 +89,9 @@ public class PlayerController : NetworkBehaviour
             case 1:
                 newSkyboxMaterial = arachnophobieSkybox;
                 break;
+            case 2:
+                newSkyboxMaterial = acrophobiephobieSkybox;
+                break;
                 // Ajoute d'autres cas pour les autres niveaux si nécessaire
         }
 
@@ -94,7 +101,7 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    void ChangeAudioByIndex(int audioIndex)
+    void ChangeAudioByIndex(int audioIndex, int modePhobie)
     {
         foreach (AudioSource audioSource in GetComponentsInChildren<AudioSource>())
         {
@@ -102,9 +109,22 @@ public class PlayerController : NetworkBehaviour
             audioSource.gameObject.SetActive(false);
         }
 
-        if (audioIndex >= 0 && audioIndex < AracnoAudioSources.Length)
+        if (audioIndex >= 0)
         {
-            AudioSource selectedAudio = AracnoAudioSources[audioIndex];
+            AudioSource selectedAudio = new AudioSource();
+            switch (modePhobie)
+            {
+                case 0:
+                    selectedAudio = AracnoAudioSources[audioIndex];
+                    break;
+                case 1:
+                    selectedAudio = AcrophobieAudioSources[audioIndex];
+                    break;
+                case 2:
+                    selectedAudio = OphiophobieAudioSources[audioIndex];
+                    break;
+            }
+            
             selectedAudio.gameObject.SetActive(true);
             selectedAudio.Play();
         }
@@ -161,7 +181,7 @@ public class PlayerController : NetworkBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         rigidBody = GetComponent<Rigidbody>();
-        ChangeAudioByIndex(0);
+        ChangeAudioByIndex(0,0);
     }
 
     void Update()

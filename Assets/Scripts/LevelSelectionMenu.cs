@@ -19,6 +19,7 @@ public class LevelSelectionMenu : NetworkBehaviour
     public AudioSource arachnophobie6Audio;
 
     public Dropdown arachnophobieButton;
+    public Dropdown acrophobieButton;
     public GameObject patientPrefab;
 
 
@@ -145,27 +146,62 @@ public class LevelSelectionMenu : NetworkBehaviour
         {
             case 0:
                 TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
-                localPlayer.RpcChangeAudioIndex(0);
+                localPlayer.RpcChangeAudioIndex(0,0);
                 break;
             case 1:
                 TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
-                localPlayer.RpcChangeAudioIndex(1);
+                localPlayer.RpcChangeAudioIndex(1,0);
                 break;
             case 2:
                 TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
-                localPlayer.RpcChangeAudioIndex(0);
+                localPlayer.RpcChangeAudioIndex(0,0);
                 break;
             case 3:
                 TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
-                localPlayer.RpcChangeAudioIndex(0);
+                localPlayer.RpcChangeAudioIndex(0,0);
                 break;
             case 4:
                 TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
-                localPlayer.RpcChangeAudioIndex(0);
+                localPlayer.RpcChangeAudioIndex(0,0);
                 break;
             case 5:
                 TeleportPatientToPosition(new Vector3(13.5f, 09f, 3f));
-                localPlayer.RpcChangeAudioIndex(2);
+                localPlayer.RpcChangeAudioIndex(2,0);
+                break;
+        }
+    }
+
+    public void AcrophobieLevelSelection()
+    {
+        int selectedIndex = acrophobieButton.value;
+        Debug.Log(acrophobieButton.value);
+        localPlayer.CmdChangeSkybox(selectedIndex);
+
+        switch (acrophobieButton.value)
+        {
+            case 0:
+                TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
+                localPlayer.RpcChangeAudioIndex(0,0);
+                break;
+            case 1:
+                TeleportPatientToPosition(new Vector3(0f, 1f, 300f));
+                localPlayer.RpcChangeAudioIndex(1,1);
+                break;
+            case 2:
+                TeleportPatientToPosition(new Vector3(0f, 1f, 320f));
+                localPlayer.RpcChangeAudioIndex(2,1);
+                break;
+            case 3:
+                TeleportPatientToPosition(new Vector3(20f, 1f, 300f));
+                localPlayer.RpcChangeAudioIndex(0,0);
+                break;
+            case 4:
+                TeleportPatientToPosition(new Vector3(20f, 1f, 320f));
+                localPlayer.RpcChangeAudioIndex(0,0);
+                break;
+            case 5:
+                TeleportPatientToPosition(new Vector3(13.5f, 09f, 3f));
+                localPlayer.RpcChangeAudioIndex(2,1);
                 break;
         }
     }
