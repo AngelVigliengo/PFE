@@ -16,6 +16,11 @@ public class PlayerController : NetworkBehaviour
     private float pitch = 0.0f;
     private bool isMenuActive = false;
 
+    public Material normalSkybox;
+    public Material arachnophobieSkybox;
+
+    public AudioSource[] AracnoAudioSources;
+
     // Variable pour indiquer si le joueur est le docteur
     [SyncVar(hook = nameof(OnIsDoctorChanged))]
     public bool isDoctor = false;
@@ -26,8 +31,85 @@ public class PlayerController : NetworkBehaviour
     [SyncVar(hook = nameof(OnCameraRotationChanged))]
     private float cameraYaw = 0f;
 
-    [SyncVar(hook = nameof(OnPlayerPositionChanged))]
-    public Vector3 playerPosition = Vector3.zero;
+    /*[SyncVar(hook = nameof(OnPlayerPositionChanged))]
+    public Vector3 playerPosition = Vector3.zero;*/
+
+    [Command]
+    public void CmdChangePlayerPosition(Vector3 position)
+    {
+        RpcChangePlayerPosition(position);
+    }
+
+    [ClientRpc]
+    public void RpcChangePlayerPosition(Vector3 position)
+    {
+        OnPlayerPositionChanged(position);
+    }
+
+    [Command]
+    public void CmdChangeSkybox(int skyboxIndex)
+    {
+        RpcChangeSkybox(skyboxIndex);
+    }
+
+    [ClientRpc]
+    public void RpcChangeSkybox(int skyboxIndex)
+    {
+        ChangeSkyboxByIndex(skyboxIndex);
+    }
+
+    // Fonction de synchronisation des changements d'audio vers le serveur
+    [Command]
+    public void CmdSyncAudioIndex(int audioIndex)
+    {
+        // Appeler la fonction sur tous les clients pour changer l'audio
+        RpcChangeAudioIndex(audioIndex);
+    }
+
+    // Fonction RPC pour synchroniser les changements d'audio sur tous les clients
+    [ClientRpc]
+    public void RpcChangeAudioIndex(int audioIndex)
+    {
+        ChangeAudioByIndex(audioIndex);
+    }
+
+    void ChangeSkyboxByIndex(int skyboxIndex)
+    {
+        Material newSkyboxMaterial = null;
+
+        switch (skyboxIndex)
+        {
+            case 0:
+                newSkyboxMaterial = normalSkybox;
+                break;
+            case 1:
+                newSkyboxMaterial = arachnophobieSkybox;
+                break;
+                // Ajoute d'autres cas pour les autres niveaux si nécessaire
+        }
+
+        if (newSkyboxMaterial != null)
+        {
+            RenderSettings.skybox = newSkyboxMaterial;
+        }
+    }
+
+    void ChangeAudioByIndex(int audioIndex)
+    {
+        foreach (AudioSource audioSource in GetComponentsInChildren<AudioSource>())
+        {
+            audioSource.Stop();
+            audioSource.gameObject.SetActive(false);
+        }
+
+        if (audioIndex >= 0 && audioIndex < AracnoAudioSources.Length)
+        {
+            AudioSource selectedAudio = AracnoAudioSources[audioIndex];
+            selectedAudio.gameObject.SetActive(true);
+            selectedAudio.Play();
+        }
+    }
+
 
     public override void OnStartLocalPlayer()
     {
@@ -72,17 +154,14 @@ public class PlayerController : NetworkBehaviour
 
     private void OnPlayerPositionChanged(Vector3 newPosition)
     {
-        // Mise à jour de la position du joueur sur les clients
-        if (!isLocalPlayer)
-        {
-            transform.position = newPosition;
-        }
+        transform.position = newPosition;
     }
 
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         rigidBody = GetComponent<Rigidbody>();
+        ChangeAudioByIndex(0);
     }
 
     void Update()
@@ -93,6 +172,14 @@ public class PlayerController : NetworkBehaviour
         {
             Cursor.visible = isMenuActive;
             Cursor.lockState = levelSelectionMenu.isActive ? CursorLockMode.None : CursorLockMode.Locked;
+        }
+        else
+        {
+            GameObject currentDoctor = GameObject.FindGameObjectWithTag("GameController");
+            if (currentDoctor != null)
+            {
+                transform.position = currentDoctor.transform.position;
+            }
         }
         
         // Mettre à jour la rotation de la caméra uniquement si le menu n'est pas actif
@@ -112,8 +199,9 @@ public class PlayerController : NetworkBehaviour
                 CmdSyncCameraRotations(pitch, yaw);
 
                 // Envoyer la position du joueur au serveur
-                CmdSyncPlayerPosition(transform.position);
+                //CmdChangePlayerPosition(transform.position);
             }
+
         }
         
     }
@@ -126,12 +214,12 @@ public class PlayerController : NetworkBehaviour
         cameraYaw = yaw;
     }
 
-    // Fonction de synchronisation de la position du joueur vers le serveur
+    /*
     [Command]
     void CmdSyncPlayerPosition(Vector3 position)
     {
         playerPosition = position;
-    }
+    }*/
 
     private void FixedUpdate()
     {
