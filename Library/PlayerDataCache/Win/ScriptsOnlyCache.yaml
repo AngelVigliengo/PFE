@@ -63,8 +63,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -81,56 +79,54 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
-    - Class: 111
-      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 11396}
     - Class: 114
       Script: {instanceID: 11398}
     - Class: 114
-      Script: {instanceID: 11400}
+      Script: {instanceID: 11532}
     - Class: 114
-      Script: {instanceID: 11428}
+      Script: {instanceID: 11784}
     - Class: 114
-      Script: {instanceID: 11680}
+      Script: {instanceID: 11788}
     - Class: 114
-      Script: {instanceID: 11684}
+      Script: {instanceID: 11832}
     - Class: 114
-      Script: {instanceID: 11728}
+      Script: {instanceID: 11898}
     - Class: 114
-      Script: {instanceID: 11794}
+      Script: {instanceID: 12288}
     - Class: 114
-      Script: {instanceID: 12184}
+      Script: {instanceID: 12410}
     - Class: 114
-      Script: {instanceID: 12306}
+      Script: {instanceID: 12462}
     - Class: 114
-      Script: {instanceID: 12358}
+      Script: {instanceID: 12716}
     - Class: 114
-      Script: {instanceID: 12612}
+      Script: {instanceID: 12930}
     - Class: 114
-      Script: {instanceID: 12826}
+      Script: {instanceID: 13000}
     - Class: 114
-      Script: {instanceID: 12896}
+      Script: {instanceID: 13208}
     - Class: 114
-      Script: {instanceID: 13104}
+      Script: {instanceID: 13332}
     - Class: 114
-      Script: {instanceID: 13228}
+      Script: {instanceID: 13354}
     - Class: 114
-      Script: {instanceID: 13250}
+      Script: {instanceID: 13610}
     - Class: 114
-      Script: {instanceID: 13508}
+      Script: {instanceID: 13696}
     - Class: 114
-      Script: {instanceID: 13594}
+      Script: {instanceID: 13726}
     - Class: 114
-      Script: {instanceID: 13624}
+      Script: {instanceID: 13938}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 14166}
     - Class: 114
-      Script: {instanceID: 14064}
+      Script: {instanceID: 14226}
     - Class: 114
-      Script: {instanceID: 14124}
+      Script: {instanceID: 14248}
     - Class: 114
-      Script: {instanceID: 14146}
+      Script: {instanceID: 14270}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -144,6 +140,8 @@ ScriptsOnlyBuild:
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -162,12 +160,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
-  - hash:
-      serializedVersion: 2
-      Hash: aa88ae22474df55295327e4ee99e5a24
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: eafb77726b67b7571818a7210a3ce11e
@@ -512,7 +504,7 @@ ScriptsOnlyBuild:
     className: NetworkStartPosition
   - hash:
       serializedVersion: 2
-      Hash: 708f80d98ad55a5348d844d092888095
+      Hash: e4c149b3a2bac7162c256ee8168bedfa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelSelectionMenu
@@ -720,6 +712,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: StandaloneInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: aa88ae22474df55295327e4ee99e5a24
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744

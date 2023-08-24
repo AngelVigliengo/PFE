@@ -576,6 +576,21 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 588025262096805297, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1150149639914607881}
+    - target: {fileID: 588025262096805297, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OphiophobieLevelSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 588025262096805297, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2267441494048771539, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
       propertyPath: m_AssetId.i0
@@ -658,6 +673,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
       propertyPath: m_Options.m_Options.Array.data[0].m_Text
       value: 
       objectReference: {fileID: 0}
@@ -670,6 +690,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
       value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[3].m_Text
+      value: Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[4].m_Text
+      value: Level 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[5].m_Text
+      value: Level 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[6].m_Text
+      value: Level 6
       objectReference: {fileID: 0}
     - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
@@ -788,6 +828,16 @@ PrefabInstance:
       objectReference: {fileID: 3471363130974007814}
     - target: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
+      propertyPath: ophiophobieButton
+      value: 
+      objectReference: {fileID: 7727898612994880894}
+    - target: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: arachnophobie6Audio
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
       propertyPath: arachnophobieButton
       value: 
       objectReference: {fileID: 6779758550765183943}
@@ -820,6 +870,18 @@ GameObject:
 --- !u!114 &6779758550765183943 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7139919566900517071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7727898612994880894 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 588025262096805297, guid: b383cddf28ed0f84ca2472ff14bdce4d,
     type: 3}
   m_PrefabInstance: {fileID: 7139919566900517071}
   m_PrefabAsset: {fileID: 0}

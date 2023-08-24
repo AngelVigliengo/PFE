@@ -19,6 +19,7 @@ public class LevelSelectionMenu : NetworkBehaviour
     public AudioSource arachnophobie6Audio;
 
     public Dropdown arachnophobieButton;
+    public Dropdown ophiophobieButton;
     public GameObject patientPrefab;
 
 
@@ -134,14 +135,48 @@ public class LevelSelectionMenu : NetworkBehaviour
 
     public void AracnophobieLevelSelection()
     {
-
-        //ResetAudioAndSkybox();
-        //SetNormalLevel();
-
         int selectedIndex = arachnophobieButton.value;
         localPlayer.CmdChangeSkybox(selectedIndex);
 
-        switch (arachnophobieButton.value)
+        switch (selectedIndex)
+        {
+            case 0:
+                TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
+                localPlayer.RpcChangeAudioIndex(0);
+                break;
+            case 1:
+                TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
+                localPlayer.RpcChangeAudioIndex(1);
+                break;
+            case 2:
+                TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
+                localPlayer.RpcChangeAudioIndex(2);
+                break;
+            case 3:
+                TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
+                localPlayer.RpcChangeAudioIndex(0);
+                break;
+            case 4:
+                TeleportPatientToPosition(new Vector3(24f, 1f, 3f));
+                localPlayer.RpcChangeAudioIndex(0);
+                break;
+            case 5:
+                TeleportPatientToPosition(new Vector3(13.5f, 09f, 3f));
+                localPlayer.RpcChangeAudioIndex(0);
+                break;
+            case 6:
+                TeleportPatientToPosition(new Vector3(13.5f, 09f, 3f));
+                localPlayer.RpcChangeAudioIndex(2);
+                break;
+        }
+    }
+
+    public void OphiophobieLevelSelection()
+    {
+        int selectedIndex = ophiophobieButton.value;
+        localPlayer.CmdChangeSkybox(selectedIndex);
+
+        switch (selectedIndex)
         {
             case 0:
                 TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
@@ -153,14 +188,14 @@ public class LevelSelectionMenu : NetworkBehaviour
                 break;
             case 2:
                 TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
-                localPlayer.RpcChangeAudioIndex(0);
+                localPlayer.RpcChangeAudioIndex(2);
                 break;
             case 3:
                 TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
                 localPlayer.RpcChangeAudioIndex(0);
                 break;
             case 4:
-                TeleportPatientToPosition(new Vector3(5f, 1f, 3f));
+                TeleportPatientToPosition(new Vector3(24f, 1f, 3f));
                 localPlayer.RpcChangeAudioIndex(0);
                 break;
             case 5:
