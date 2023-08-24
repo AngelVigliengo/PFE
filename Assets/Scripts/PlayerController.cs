@@ -92,6 +92,9 @@ public class PlayerController : NetworkBehaviour
             case 2:
                 newSkyboxMaterial = acrophobiephobieSkybox;
                 break;
+            case 3:
+                newSkyboxMaterial = acrophobiephobiefloueSkybox;
+                break;
                 // Ajoute d'autres cas pour les autres niveaux si nécessaire
         }
 

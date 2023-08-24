@@ -206,11 +206,15 @@ MonoBehaviour:
       m_Image: {fileID: 0}
     - m_Text: Level 2
       m_Image: {fileID: 0}
+    - m_Text: Level 3
+      m_Image: {fileID: 0}
     - m_Text: Level 4
       m_Image: {fileID: 0}
     - m_Text: Level 5
       m_Image: {fileID: 0}
     - m_Text: Level 6
+      m_Image: {fileID: 0}
+    - m_Text: Level 7
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1933,6 +1937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
+      propertyPath: m_Options.m_Options.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
       propertyPath: m_Options.m_Options.Array.data[0].m_Text
       value: 
       objectReference: {fileID: 0}
@@ -1945,6 +1954,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Options.m_Options.Array.data[2].m_Text
       value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[3].m_Text
+      value: Level 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[4].m_Text
+      value: Level 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[5].m_Text
+      value: Level 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[6].m_Text
+      value: Level 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[7].m_Text
+      value: Level 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[8].m_Text
+      value: Level 8
       objectReference: {fileID: 0}
     - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}

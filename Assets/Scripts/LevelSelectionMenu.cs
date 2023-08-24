@@ -175,33 +175,48 @@ public class LevelSelectionMenu : NetworkBehaviour
     {
         int selectedIndex = acrophobieButton.value;
         Debug.Log(acrophobieButton.value);
-        localPlayer.CmdChangeSkybox(selectedIndex);
 
         switch (acrophobieButton.value)
         {
             case 0:
                 TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
                 localPlayer.RpcChangeAudioIndex(0,0);
+                localPlayer.CmdChangeSkybox(3);
                 break;
             case 1:
                 TeleportPatientToPosition(new Vector3(0f, 1f, 300f));
                 localPlayer.RpcChangeAudioIndex(1,1);
+                localPlayer.CmdChangeSkybox(3);
                 break;
             case 2:
                 TeleportPatientToPosition(new Vector3(0f, 1f, 320f));
                 localPlayer.RpcChangeAudioIndex(2,1);
+                localPlayer.CmdChangeSkybox(3);
                 break;
             case 3:
-                TeleportPatientToPosition(new Vector3(20f, 1f, 300f));
+                TeleportPatientToPosition(new Vector3(0f, 1f, 280f));
                 localPlayer.RpcChangeAudioIndex(0,0);
+                localPlayer.CmdChangeSkybox(2);
                 break;
             case 4:
-                TeleportPatientToPosition(new Vector3(20f, 1f, 320f));
+                TeleportPatientToPosition(new Vector3(0f, 1f, 340f));
                 localPlayer.RpcChangeAudioIndex(0,0);
+                localPlayer.CmdChangeSkybox(2);
                 break;
             case 5:
-                TeleportPatientToPosition(new Vector3(13.5f, 09f, 3f));
+                TeleportPatientToPosition(new Vector3(20f, 09f, 300f));
                 localPlayer.RpcChangeAudioIndex(2,1);
+                localPlayer.CmdChangeSkybox(2);
+                break;
+            case 6:
+                TeleportPatientToPosition(new Vector3(20f, 09f, 320f));
+                localPlayer.RpcChangeAudioIndex(2, 1);
+                localPlayer.CmdChangeSkybox(2);
+                break;
+            case 7:
+                TeleportPatientToPosition(new Vector3(20f, 09f, 280f));
+                localPlayer.RpcChangeAudioIndex(2, 1);
+                localPlayer.CmdChangeSkybox(2);
                 break;
         }
     }
