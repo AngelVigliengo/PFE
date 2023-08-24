@@ -809,4 +809,4 @@ ScriptsOnlyBuild:
   scenePathNames:
   - Assets/Scenes/MainScene.unity
   - Assets/Scenes/MainMenu.unity
-  playerPath: C:/Users/gegel/Desktop/PFE test/PFE.exe
+  playerPath: C:/Users/Pierre-Louis/Desktop/PFE_Build/PFE.exe

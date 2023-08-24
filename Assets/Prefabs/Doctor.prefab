@@ -316,6 +316,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 777173410825823012, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 2267441494048771539, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
       propertyPath: m_AssetId.i0
@@ -395,6 +400,52 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AssetId.i15
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[0].m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[1].m_Text
+      value: Level 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_Options.m_Options.Array.data[2].m_Text
+      value: Level 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: AcrophopieLevelSelection
+      objectReference: {fileID: 0}
+    - target: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
@@ -528,6 +579,11 @@ PrefabInstance:
       objectReference: {fileID: 3471363130974007814}
     - target: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
         type: 3}
+      propertyPath: acrophobieButton
+      value: 
+      objectReference: {fileID: 6312970842036567966}
+    - target: {fileID: 7845323347038571974, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+        type: 3}
       propertyPath: arachnophobieButton
       value: 
       objectReference: {fileID: 6779758550765183943}
@@ -560,6 +616,18 @@ GameObject:
 --- !u!114 &6779758550765183943 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4395686406520961800, guid: b383cddf28ed0f84ca2472ff14bdce4d,
+    type: 3}
+  m_PrefabInstance: {fileID: 7139919566900517071}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b652f32a2cc243917e4028fa0f046, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6312970842036567966 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3785902813503792977, guid: b383cddf28ed0f84ca2472ff14bdce4d,
     type: 3}
   m_PrefabInstance: {fileID: 7139919566900517071}
   m_PrefabAsset: {fileID: 0}

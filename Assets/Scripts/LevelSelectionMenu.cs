@@ -12,6 +12,7 @@ public class LevelSelectionMenu : NetworkBehaviour
     private PlayerController localPlayer;
 
     public Dropdown arachnophobieButton;
+    public Dropdown acrophobieButton;
 
     // Référence au préfab du patient (assurez-vous de le définir dans l'inspecteur Unity)
     public GameObject patientPrefab;
@@ -36,6 +37,10 @@ public class LevelSelectionMenu : NetworkBehaviour
                 currentPatient.transform.position = position;
                 Debug.Log("TP");
                 Debug.Log(currentPatient.transform.position);
+            }
+            else
+            {
+                Debug.Log("Pas de joueur trouvé");
             }
         }
         else
@@ -76,6 +81,24 @@ public class LevelSelectionMenu : NetworkBehaviour
         }
     }
 
+    public void AcrophopieLevelSelection()
+    {
+        Debug.Log(acrophobieButton.value);
+        switch (acrophobieButton.value)
+        {
+            case 0:
+                TeleportPatientToPosition(new Vector3(25f, 30f, 25f));
+            Debug.Log("Spawn");
+            break;
+            case 1:
+                TeleportPatientToPosition(new Vector3(4.5f, 0.7f, 4f));
+            break;
+            case 2:
+                TeleportPatientToPosition(new Vector3(13.5f, 0.9f, 3f));
+            break;
+        }
+    }
+
     public void AracnophobieLevelSelection()
     {
         switch (arachnophobieButton.value)
@@ -85,10 +108,10 @@ public class LevelSelectionMenu : NetworkBehaviour
                 Debug.Log("Spawn");
                 break;
             case 1:
-                TeleportPatientToPosition(new Vector3(5f, 3f, 3f));
+                TeleportPatientToPosition(new Vector3(4.5f, 0.7f, 4f));
                 break;
             case 2:
-                TeleportPatientToPosition(new Vector3(13.5f, 8f, 3f));
+                TeleportPatientToPosition(new Vector3(13.5f, 0.9f, 3f));
                 break;
         }
     }

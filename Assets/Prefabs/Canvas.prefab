@@ -1136,7 +1136,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Panel: {fileID: 8783800434148162656}
-  arachnophobieButton: {fileID: 8783800432979938227}
+  isActive: 0
+  arachnophobieButton: {fileID: 0}
+  acrophobieButton: {fileID: 0}
   patientPrefab: {fileID: 2897088907228346532, guid: d8fa150fcf57a7e4ca6d941db0ff6a09,
     type: 3}
 --- !u!1 &9095430206479106703
@@ -1312,7 +1314,7 @@ PrefabInstance:
     - target: {fileID: 4425462005110282296, guid: 349eb749096d9e04086e926ec241d477,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4425462005110282296, guid: 349eb749096d9e04086e926ec241d477,
         type: 3}
@@ -1342,18 +1344,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4939382040849327199}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8783800432979938227 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4425462006148345836, guid: 349eb749096d9e04086e926ec241d477,
-    type: 3}
-  m_PrefabInstance: {fileID: 4939382040849327199}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &8783800434148162663 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4425462005110282296, guid: 349eb749096d9e04086e926ec241d477,
