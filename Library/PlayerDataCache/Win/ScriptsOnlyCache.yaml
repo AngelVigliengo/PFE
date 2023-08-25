@@ -30,6 +30,10 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
+    com.unity.multiplayer-hlapi.Editor.dll:
+    - UnityEditor.NetworkBehaviourInspector
+    - UnityEditor.NetworkIdentityEditor
+    - UnityEditor.NetworkTransformEditor
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkIdentity
@@ -84,49 +88,49 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11398}
     - Class: 114
-      Script: {instanceID: 11532}
+      Script: {instanceID: 11428}
     - Class: 114
-      Script: {instanceID: 11784}
+      Script: {instanceID: 11680}
     - Class: 114
-      Script: {instanceID: 11788}
+      Script: {instanceID: 11684}
     - Class: 114
-      Script: {instanceID: 11832}
+      Script: {instanceID: 11728}
     - Class: 114
-      Script: {instanceID: 11898}
+      Script: {instanceID: 11794}
     - Class: 114
-      Script: {instanceID: 12288}
+      Script: {instanceID: 12184}
     - Class: 114
-      Script: {instanceID: 12410}
+      Script: {instanceID: 12306}
     - Class: 114
-      Script: {instanceID: 12462}
+      Script: {instanceID: 12358}
     - Class: 114
-      Script: {instanceID: 12716}
+      Script: {instanceID: 12612}
     - Class: 114
-      Script: {instanceID: 12930}
+      Script: {instanceID: 12826}
     - Class: 114
-      Script: {instanceID: 13000}
+      Script: {instanceID: 12896}
     - Class: 114
-      Script: {instanceID: 13208}
+      Script: {instanceID: 13104}
     - Class: 114
-      Script: {instanceID: 13332}
+      Script: {instanceID: 13228}
     - Class: 114
-      Script: {instanceID: 13354}
+      Script: {instanceID: 13250}
     - Class: 114
-      Script: {instanceID: 13610}
+      Script: {instanceID: 13506}
     - Class: 114
-      Script: {instanceID: 13696}
+      Script: {instanceID: 13592}
     - Class: 114
-      Script: {instanceID: 13726}
+      Script: {instanceID: 13622}
     - Class: 114
-      Script: {instanceID: 13938}
+      Script: {instanceID: 13834}
+    - Class: 114
+      Script: {instanceID: 14062}
+    - Class: 114
+      Script: {instanceID: 14122}
+    - Class: 114
+      Script: {instanceID: 14144}
     - Class: 114
       Script: {instanceID: 14166}
-    - Class: 114
-      Script: {instanceID: 14226}
-    - Class: 114
-      Script: {instanceID: 14248}
-    - Class: 114
-      Script: {instanceID: 14270}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -136,6 +140,8 @@ ScriptsOnlyBuild:
     - Class: 137
       Script: {instanceID: 0}
     - Class: 154
+      Script: {instanceID: 0}
+    - Class: 156
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -600,7 +606,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 0f1b77f285afc1e4ef61001fb09d4a8c
+      Hash: 36440d0ce6b85b3f97a3ee0f1188fa3d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
