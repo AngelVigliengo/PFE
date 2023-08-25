@@ -30,6 +30,10 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
+    com.unity.multiplayer-hlapi.Editor.dll:
+    - UnityEditor.NetworkBehaviourInspector
+    - UnityEditor.NetworkIdentityEditor
+    - UnityEditor.NetworkTransformEditor
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkIdentity
@@ -63,8 +67,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -81,14 +83,10 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
-    - Class: 111
-      Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 11396}
     - Class: 114
       Script: {instanceID: 11398}
-    - Class: 114
-      Script: {instanceID: 11400}
     - Class: 114
       Script: {instanceID: 11428}
     - Class: 114
@@ -118,19 +116,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13250}
     - Class: 114
-      Script: {instanceID: 13508}
+      Script: {instanceID: 13506}
     - Class: 114
-      Script: {instanceID: 13594}
+      Script: {instanceID: 13592}
     - Class: 114
-      Script: {instanceID: 13624}
+      Script: {instanceID: 13622}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 13834}
     - Class: 114
-      Script: {instanceID: 14064}
+      Script: {instanceID: 14062}
     - Class: 114
-      Script: {instanceID: 14124}
+      Script: {instanceID: 14122}
     - Class: 114
-      Script: {instanceID: 14146}
+      Script: {instanceID: 14144}
+    - Class: 114
+      Script: {instanceID: 14166}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -141,9 +141,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 154
       Script: {instanceID: 0}
+    - Class: 156
+      Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -162,12 +166,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
-  - hash:
-      serializedVersion: 2
-      Hash: aa88ae22474df55295327e4ee99e5a24
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: eafb77726b67b7571818a7210a3ce11e
@@ -512,7 +510,7 @@ ScriptsOnlyBuild:
     className: NetworkStartPosition
   - hash:
       serializedVersion: 2
-      Hash: 708f80d98ad55a5348d844d092888095
+      Hash: e4c149b3a2bac7162c256ee8168bedfa
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelSelectionMenu
@@ -608,7 +606,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 0f1b77f285afc1e4ef61001fb09d4a8c
+      Hash: 36440d0ce6b85b3f97a3ee0f1188fa3d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
@@ -720,6 +718,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: StandaloneInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: aa88ae22474df55295327e4ee99e5a24
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
