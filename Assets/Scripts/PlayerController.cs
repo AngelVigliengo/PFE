@@ -34,9 +34,6 @@ public class PlayerController : NetworkBehaviour
     [SyncVar(hook = nameof(OnCameraRotationChanged))]
     private float cameraYaw = 0f;
 
-    /*[SyncVar(hook = nameof(OnPlayerPositionChanged))]
-    public Vector3 playerPosition = Vector3.zero;*/
-
     [Command]
     public void CmdChangePlayerPosition(Vector3 position)
     {
@@ -91,7 +88,6 @@ public class PlayerController : NetworkBehaviour
             case 2:
                 newSkyboxMaterial = ophiophobieSkybox[skyboxIndex];
                 break;
-                // Ajoute d'autres cas pour les autres niveaux si nécessaire
         }
 
         if (newSkyboxMaterial != null)
@@ -130,7 +126,6 @@ public class PlayerController : NetworkBehaviour
 
     public override void OnStartLocalPlayer()
     {
-        // Appeler la méthode SetLocalPlayer du LevelSelectionMenu pour définir la référence au PlayerController local
         GameObject levelSelectionMenuObj = GameObject.FindGameObjectWithTag("LevelSelectionMenu");
         if (levelSelectionMenuObj != null)
         {
@@ -141,18 +136,15 @@ public class PlayerController : NetworkBehaviour
 
     private void OnIsDoctorChanged(bool newIsDoctor)
     {
-        // Implémentez ici le comportement en fonction du rôle du joueur (docteur ou patient)
         if (isLocalPlayer)
         {
             if (isDoctor)
             {
                 Debug.Log("Vous êtes le docteur.");
-                // Implémentez ici le comportement spécifique au docteur
             }
             else
             {
                 Debug.Log("Vous êtes un patient.");
-                // Implémentez ici le comportement spécifique au patient
             }
         }
     }
@@ -214,9 +206,6 @@ public class PlayerController : NetworkBehaviour
             {
                 // Envoyer les rotations de la caméra au serveur
                 CmdSyncCameraRotations(pitch, yaw);
-
-                // Envoyer la position du joueur au serveur
-                //CmdChangePlayerPosition(transform.position);
             }
 
         }
@@ -230,13 +219,6 @@ public class PlayerController : NetworkBehaviour
         cameraPitch = pitch;
         cameraYaw = yaw;
     }
-
-    /*
-    [Command]
-    void CmdSyncPlayerPosition(Vector3 position)
-    {
-        playerPosition = position;
-    }*/
 
     private void FixedUpdate()
     {

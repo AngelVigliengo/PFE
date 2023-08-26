@@ -30,10 +30,6 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Scrollbar
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
-    com.unity.multiplayer-hlapi.Editor.dll:
-    - UnityEditor.NetworkBehaviourInspector
-    - UnityEditor.NetworkIdentityEditor
-    - UnityEditor.NetworkTransformEditor
     com.unity.multiplayer-hlapi.Runtime.dll:
     - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkIdentity
@@ -88,6 +84,8 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11398}
     - Class: 114
+      Script: {instanceID: 11400}
+    - Class: 114
       Script: {instanceID: 11428}
     - Class: 114
       Script: {instanceID: 11680}
@@ -129,8 +127,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14122}
     - Class: 114
       Script: {instanceID: 14144}
-    - Class: 114
-      Script: {instanceID: 14166}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -166,6 +162,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: aa88ae22474df55295327e4ee99e5a24
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: eafb77726b67b7571818a7210a3ce11e
@@ -510,7 +512,7 @@ ScriptsOnlyBuild:
     className: NetworkStartPosition
   - hash:
       serializedVersion: 2
-      Hash: e4c149b3a2bac7162c256ee8168bedfa
+      Hash: 57f333c4ee9d309b1a9f2963a3a5fb5a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelSelectionMenu
@@ -718,12 +720,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: StandaloneInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: aa88ae22474df55295327e4ee99e5a24
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
