@@ -16,10 +16,13 @@ public class PlayerController : NetworkBehaviour
     private float pitch = 0.0f;
     private bool isMenuActive = false;
 
-    public Material normalSkybox;
-    public Material arachnophobieSkybox;
+    public Material[] arachnophobieSkybox;
+    public Material[] acroophobieSkybox;
+    public Material[] ophiophobieSkybox;
 
-    public AudioSource[] AracnoAudioSources;
+    public AudioSource[] aracnoAudioSources;
+    public AudioSource[] acroAudioSources;
+    public AudioSource[] ophioAudioSources;
 
     // Variable pour indiquer si le joueur est le docteur
     [SyncVar(hook = nameof(OnIsDoctorChanged))]
@@ -30,9 +33,6 @@ public class PlayerController : NetworkBehaviour
 
     [SyncVar(hook = nameof(OnCameraRotationChanged))]
     private float cameraYaw = 0f;
-
-    /*[SyncVar(hook = nameof(OnPlayerPositionChanged))]
-    public Vector3 playerPosition = Vector3.zero;*/
 
     [Command]
     public void CmdChangePlayerPosition(Vector3 position)
@@ -47,45 +47,47 @@ public class PlayerController : NetworkBehaviour
     }
 
     [Command]
-    public void CmdChangeSkybox(int skyboxIndex)
+    public void CmdChangeSkybox(int skyboxIndex, int levelIndex)
     {
-        RpcChangeSkybox(skyboxIndex);
+        RpcChangeSkybox(skyboxIndex, levelIndex);
     }
 
     [ClientRpc]
-    public void RpcChangeSkybox(int skyboxIndex)
+    public void RpcChangeSkybox(int skyboxIndex, int levelIndex)
     {
-        ChangeSkyboxByIndex(skyboxIndex);
+        ChangeSkyboxByIndex(skyboxIndex, levelIndex);
     }
 
     // Fonction de synchronisation des changements d'audio vers le serveur
     [Command]
-    public void CmdSyncAudioIndex(int audioIndex)
+    public void CmdSyncAudioIndex(int audioIndex, int levelIndex)
     {
         // Appeler la fonction sur tous les clients pour changer l'audio
-        RpcChangeAudioIndex(audioIndex);
+        RpcChangeAudioIndex(audioIndex, levelIndex);
     }
 
     // Fonction RPC pour synchroniser les changements d'audio sur tous les clients
     [ClientRpc]
-    public void RpcChangeAudioIndex(int audioIndex)
+    public void RpcChangeAudioIndex(int audioIndex, int levelIndex)
     {
-        ChangeAudioByIndex(audioIndex);
+        ChangeAudioByIndex(audioIndex, levelIndex);
     }
 
-    void ChangeSkyboxByIndex(int skyboxIndex)
+    void ChangeSkyboxByIndex(int skyboxIndex, int levelIndex)
     {
         Material newSkyboxMaterial = null;
 
-        switch (skyboxIndex)
+        switch (levelIndex)
         {
             case 0:
-                newSkyboxMaterial = normalSkybox;
+                newSkyboxMaterial = arachnophobieSkybox[skyboxIndex];
                 break;
             case 1:
-                newSkyboxMaterial = arachnophobieSkybox;
+                newSkyboxMaterial = acroophobieSkybox[skyboxIndex];
                 break;
-                // Ajoute d'autres cas pour les autres niveaux si nécessaire
+            case 2:
+                newSkyboxMaterial = ophiophobieSkybox[skyboxIndex];
+                break;
         }
 
         if (newSkyboxMaterial != null)
@@ -94,7 +96,7 @@ public class PlayerController : NetworkBehaviour
         }
     }
 
-    void ChangeAudioByIndex(int audioIndex)
+    void ChangeAudioByIndex(int audioIndex, int levelIndex)
     {
         foreach (AudioSource audioSource in GetComponentsInChildren<AudioSource>())
         {
@@ -102,18 +104,28 @@ public class PlayerController : NetworkBehaviour
             audioSource.gameObject.SetActive(false);
         }
 
-        if (audioIndex >= 0 && audioIndex < AracnoAudioSources.Length)
+        AudioSource selectedAudio = new AudioSource();
+
+        switch (levelIndex)
         {
-            AudioSource selectedAudio = AracnoAudioSources[audioIndex];
-            selectedAudio.gameObject.SetActive(true);
-            selectedAudio.Play();
+            case 0:
+                selectedAudio = aracnoAudioSources[audioIndex];
+                break;
+            case 1:
+                selectedAudio = acroAudioSources[audioIndex];
+                break;
+            case 2:
+                selectedAudio = ophioAudioSources[audioIndex];
+                break;
         }
+
+        selectedAudio.gameObject.SetActive(true);
+        selectedAudio.Play();
     }
 
 
     public override void OnStartLocalPlayer()
     {
-        // Appeler la méthode SetLocalPlayer du LevelSelectionMenu pour définir la référence au PlayerController local
         GameObject levelSelectionMenuObj = GameObject.FindGameObjectWithTag("LevelSelectionMenu");
         if (levelSelectionMenuObj != null)
         {
@@ -124,18 +136,15 @@ public class PlayerController : NetworkBehaviour
 
     private void OnIsDoctorChanged(bool newIsDoctor)
     {
-        // Implémentez ici le comportement en fonction du rôle du joueur (docteur ou patient)
         if (isLocalPlayer)
         {
             if (isDoctor)
             {
                 Debug.Log("Vous êtes le docteur.");
-                // Implémentez ici le comportement spécifique au docteur
             }
             else
             {
                 Debug.Log("Vous êtes un patient.");
-                // Implémentez ici le comportement spécifique au patient
             }
         }
     }
@@ -161,7 +170,7 @@ public class PlayerController : NetworkBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         rigidBody = GetComponent<Rigidbody>();
-        ChangeAudioByIndex(0);
+        ChangeAudioByIndex(0,0);
     }
 
     void Update()
@@ -197,9 +206,6 @@ public class PlayerController : NetworkBehaviour
             {
                 // Envoyer les rotations de la caméra au serveur
                 CmdSyncCameraRotations(pitch, yaw);
-
-                // Envoyer la position du joueur au serveur
-                //CmdChangePlayerPosition(transform.position);
             }
 
         }
@@ -213,13 +219,6 @@ public class PlayerController : NetworkBehaviour
         cameraPitch = pitch;
         cameraYaw = yaw;
     }
-
-    /*
-    [Command]
-    void CmdSyncPlayerPosition(Vector3 position)
-    {
-        playerPosition = position;
-    }*/
 
     private void FixedUpdate()
     {

@@ -63,8 +63,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
-    - Class: 74
-      Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 82
@@ -80,8 +78,6 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
-      Script: {instanceID: 0}
-    - Class: 111
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 11396}
@@ -118,19 +114,19 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13250}
     - Class: 114
-      Script: {instanceID: 13508}
+      Script: {instanceID: 13506}
     - Class: 114
-      Script: {instanceID: 13594}
+      Script: {instanceID: 13592}
     - Class: 114
-      Script: {instanceID: 13624}
+      Script: {instanceID: 13622}
     - Class: 114
-      Script: {instanceID: 13836}
+      Script: {instanceID: 13834}
     - Class: 114
-      Script: {instanceID: 14064}
+      Script: {instanceID: 14062}
     - Class: 114
-      Script: {instanceID: 14124}
+      Script: {instanceID: 14122}
     - Class: 114
-      Script: {instanceID: 14146}
+      Script: {instanceID: 14144}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -141,9 +137,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 154
       Script: {instanceID: 0}
+    - Class: 156
+      Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -512,7 +512,7 @@ ScriptsOnlyBuild:
     className: NetworkStartPosition
   - hash:
       serializedVersion: 2
-      Hash: 708f80d98ad55a5348d844d092888095
+      Hash: 57f333c4ee9d309b1a9f2963a3a5fb5a
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: LevelSelectionMenu
@@ -608,7 +608,7 @@ ScriptsOnlyBuild:
     className: GraphicRaycaster
   - hash:
       serializedVersion: 2
-      Hash: 0f1b77f285afc1e4ef61001fb09d4a8c
+      Hash: 36440d0ce6b85b3f97a3ee0f1188fa3d
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerController
