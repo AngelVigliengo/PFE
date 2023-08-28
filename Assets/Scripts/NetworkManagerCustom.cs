@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.Networking.Match;
+using System.Collections.Generic; 
 
 public class NetworkManagerCustom : NetworkManager
 {
@@ -11,6 +13,58 @@ public class NetworkManagerCustom : NetworkManager
 
     public GameObject levelSelectionMenuObject;
     private LevelSelectionMenu levelSelectionMenu;
+
+    private NetworkMatch networkMatch;
+
+    private void Start()
+    {
+        networkMatch = gameObject.AddComponent<NetworkMatch>();
+        StartMatchmaking();
+    }
+
+    private void StartMatchmaking()
+    {
+        networkMatch.ListMatches(0, 10, "default", true, 0, 0, OnMatchList);
+    }
+
+    private void OnMatchList(bool success, string extendedInfo, List<MatchInfoSnapshot> matches)
+    {
+        if (success && matches != null && matches.Count > 0)
+        {
+            // Rejoindre le match "default" existant
+            var match = matches[0];
+            networkMatch.JoinMatch(match.networkId, "", "", "", 0, 0, OnMatchJoined);
+        }
+        else
+        {
+            // Créer un nouveau match "default" s'il n'en existe pas
+            networkMatch.CreateMatch("default", 4, true, "", "", "", 0, 0, OnMatchCreate);
+        }
+    }
+
+    private void OnMatchJoined(bool success, string extendedInfo, MatchInfo matchInfo)
+    {
+        if (success)
+        {
+            StartClient(matchInfo);
+        }
+        else
+        {
+            Debug.Log("Impossible de rejoindre le match.");
+        }
+    }
+
+    private void OnMatchCreate(bool success, string extendedInfo, MatchInfo matchInfo)
+    {
+        if (success)
+        {
+            StartHost(matchInfo);
+        }
+        else
+        {
+            Debug.Log("Impossible de créer le match.");
+        }
+    }
 
     public override void OnServerAddPlayer(NetworkConnection conn, short playerControllerId)
     {
