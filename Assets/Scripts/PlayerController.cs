@@ -223,17 +223,9 @@ public class PlayerController : NetworkBehaviour
                 ApplyCalibration();
                 playerCamera.transform.rotation = Quaternion.Slerp(playerCamera.transform.rotation, rawGyroRotation.rotation, smoothing);
             }
-            //yaw = playerCamera.transform.localEulerAngles.x;
-            //pitch = pitch - playerCamera.transform.localEulerAngles.y;
-            //
-            //pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
-            //
-            //transform.localEulerAngles = new Vector3(0, yaw, 0);
-            //playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
 
             if (isLocalPlayer)
             {
-                // Envoyer les rotations de la caméra au serveur
                 CmdSyncCameraRotations(playerCamera.transform.localRotation.eulerAngles.x, playerCamera.transform.localRotation.eulerAngles.y);
             }
         }
@@ -303,10 +295,4 @@ public class PlayerController : NetworkBehaviour
     {
         rawGyroRotation.Rotate(0f, -calibrationYAngle, 0f, Space.World);
     }
-
-    //public void SetEnabled(bool value)
-    //{
-    //    SetEnabled = true;
-    //    StartCoroutine(CalibrateYAngle());
-    //}
 }

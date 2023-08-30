@@ -206,4 +206,9 @@ public class LevelSelectionMenu : NetworkBehaviour
                 break;
         }
     }
+
+    public void QuitApplication()
+    {
+        Application.Quit();
+    }
 }

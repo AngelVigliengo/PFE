@@ -31,6 +31,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.Text
     - UnityEngine.UI.Toggle
     com.unity.multiplayer-hlapi.Runtime.dll:
+    - UnityEngine.Networking.NetworkCallbacks
     - UnityEngine.Networking.NetworkIdentity
     - UnityEngine.Networking.NetworkManagerHUD
     - UnityEngine.Networking.NetworkTransform
@@ -79,53 +80,53 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11396}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 11398}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11448}
+      Script: {instanceID: 11424}
     - Class: 114
-      Script: {instanceID: 11700}
+      Script: {instanceID: 11526}
     - Class: 114
-      Script: {instanceID: 11704}
+      Script: {instanceID: 11792}
     - Class: 114
-      Script: {instanceID: 11748}
+      Script: {instanceID: 11796}
     - Class: 114
-      Script: {instanceID: 11814}
+      Script: {instanceID: 11840}
     - Class: 114
-      Script: {instanceID: 12204}
+      Script: {instanceID: 11908}
     - Class: 114
-      Script: {instanceID: 12326}
+      Script: {instanceID: 12316}
     - Class: 114
-      Script: {instanceID: 12378}
+      Script: {instanceID: 12440}
     - Class: 114
-      Script: {instanceID: 12632}
+      Script: {instanceID: 12492}
     - Class: 114
-      Script: {instanceID: 12846}
+      Script: {instanceID: 12756}
     - Class: 114
-      Script: {instanceID: 12916}
+      Script: {instanceID: 12986}
     - Class: 114
-      Script: {instanceID: 13124}
+      Script: {instanceID: 13060}
     - Class: 114
-      Script: {instanceID: 13248}
+      Script: {instanceID: 13276}
     - Class: 114
-      Script: {instanceID: 13270}
+      Script: {instanceID: 13402}
     - Class: 114
-      Script: {instanceID: 13526}
+      Script: {instanceID: 13424}
     - Class: 114
-      Script: {instanceID: 13612}
+      Script: {instanceID: 13694}
     - Class: 114
-      Script: {instanceID: 13642}
+      Script: {instanceID: 13784}
     - Class: 114
-      Script: {instanceID: 13854}
+      Script: {instanceID: 13816}
     - Class: 114
-      Script: {instanceID: 14082}
+      Script: {instanceID: 14036}
     - Class: 114
-      Script: {instanceID: 14142}
+      Script: {instanceID: 14272}
     - Class: 114
-      Script: {instanceID: 14164}
+      Script: {instanceID: 14332}
     - Class: 114
-      Script: {instanceID: 14186}
+      Script: {instanceID: 14354}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -161,6 +162,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: aa88ae22474df55295327e4ee99e5a24
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: eafb77726b67b7571818a7210a3ce11e
@@ -713,12 +720,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.EventSystems
     className: StandaloneInputModule
-  - hash:
-      serializedVersion: 2
-      Hash: aa88ae22474df55295327e4ee99e5a24
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Toggle
   - hash:
       serializedVersion: 2
       Hash: 8220b46879dc5e37db1b940c938f5744
