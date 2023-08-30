@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
+using System.Collections;
 
 public class PlayerController : NetworkBehaviour
 {
@@ -23,6 +24,13 @@ public class PlayerController : NetworkBehaviour
     public AudioSource[] aracnoAudioSources;
     public AudioSource[] acroAudioSources;
     public AudioSource[] ophioAudioSources;
+
+    private float initialYAngle = 0f;
+    private float appliedGyroYAngle = 0f;
+    private float calibrationYAngle = 0f;
+    private float tempSmoothing = 0f;
+    private float smoothing = 0.1f;
+    private Transform rawGyroRotation;
 
     // Variable pour indiquer si le joueur est le docteur
     [SyncVar(hook = nameof(OnIsDoctorChanged))]
@@ -166,11 +174,26 @@ public class PlayerController : NetworkBehaviour
         transform.position = newPosition;
     }
 
-    void Start()
+    private IEnumerator Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
         rigidBody = GetComponent<Rigidbody>();
-        ChangeAudioByIndex(0,0);
+        ChangeAudioByIndex(0, 0);
+
+        if (SystemInfo.supportsGyroscope)
+        {
+            Input.gyro.enabled = true;
+            Application.targetFrameRate = 60;
+            initialYAngle = playerCamera.transform.eulerAngles.y;
+
+            rawGyroRotation = new GameObject("GyroRaw").transform;
+            rawGyroRotation.position = playerCamera.transform.position;
+            rawGyroRotation.rotation = playerCamera.transform.rotation;
+            yield return new WaitForSeconds(1);
+
+            StartCoroutine(CalibrateYAngle());
+        }
+
     }
 
     void Update()
@@ -190,26 +213,22 @@ public class PlayerController : NetworkBehaviour
                 transform.position = currentDoctor.transform.position;
             }
         }
-        
+
         // Mettre à jour la rotation de la caméra uniquement si le menu n'est pas actif
         if (!isMenuActive)
         {
-            yaw = transform.localEulerAngles.y + Input.GetAxis("Mouse X") * mouseSensitivity;
-            pitch = pitch - Input.GetAxis("Mouse Y") * mouseSensitivity;
-
-            pitch = Mathf.Clamp(pitch, -maxLookAngle, maxLookAngle);
-
-            transform.localEulerAngles = new Vector3(0, yaw, 0);
-            playerCamera.transform.localEulerAngles = new Vector3(pitch, 0, 0);
+            if (SystemInfo.supportsGyroscope)
+            {
+                ApplyGyroRotation();
+                ApplyCalibration();
+                playerCamera.transform.rotation = Quaternion.Slerp(playerCamera.transform.rotation, rawGyroRotation.rotation, smoothing);
+            }
 
             if (isLocalPlayer)
             {
-                // Envoyer les rotations de la caméra au serveur
-                CmdSyncCameraRotations(pitch, yaw);
+                CmdSyncCameraRotations(playerCamera.transform.localRotation.eulerAngles.x, playerCamera.transform.localRotation.eulerAngles.y);
             }
-
         }
-        
     }
 
     // Fonction de synchronisation des rotations de la caméra vers le serveur
@@ -253,5 +272,27 @@ public class PlayerController : NetworkBehaviour
 
         // Mettre à jour la rotation de la caméra du docteur
         playerCamera.transform.rotation = newRotation;
+    }
+
+    private IEnumerator CalibrateYAngle()
+    {
+        tempSmoothing = smoothing;
+        smoothing = 1;
+        calibrationYAngle = appliedGyroYAngle - initialYAngle;
+        yield return null;
+        smoothing = tempSmoothing;
+    }
+
+    private void ApplyGyroRotation()
+    {
+        rawGyroRotation.rotation = Input.gyro.attitude;
+        rawGyroRotation.Rotate(0f, 0f, 180f, Space.Self);
+        rawGyroRotation.Rotate(90f, 180f, 0f, Space.World);
+        appliedGyroYAngle = rawGyroRotation.eulerAngles.y;
+    }
+
+    private void ApplyCalibration()
+    {
+        rawGyroRotation.Rotate(0f, -calibrationYAngle, 0f, Space.World);
     }
 }
