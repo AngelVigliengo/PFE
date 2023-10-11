@@ -1,0 +1,11 @@
+Model Information:
+* title:	Giant Huntsman Spider
+* source:	https://sketchfab.com/3d-models/giant-huntsman-spider-6b46820aba4e4f7f82c1fa534e61724f
+* author:	Aiden Vang (https://sketchfab.com/vang807)
+
+Model License:
+* license type:	CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)
+* requirements:	Author must be credited. Modified versions must have the same license. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Giant Huntsman Spider" (https://sketchfab.com/3d-models/giant-huntsman-spider-6b46820aba4e4f7f82c1fa534e61724f) by Aiden Vang (https://sketchfab.com/vang807) licensed under CC-BY-SA-4.0 (http://creativecommons.org/licenses/by-sa/4.0/)

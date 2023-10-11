@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6472850764820426384}
   - component: {fileID: 3283206831143637537}
   m_Layer: 0
-  m_Name: Ophio2 Audio Source
+  m_Name: Ophio2 Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 4552a7f1cdfbb564ea4edea6caecee5c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7be6ec0e5d0b1434285b523370d8de18, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

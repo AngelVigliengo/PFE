@@ -64,6 +64,13 @@ public class LevelSelectionMenu : NetworkBehaviour
     {
         int selectedIndex = arachnophobieButton.value;
 
+        if(ophiophobieButton.value != 0){
+            ophiophobieButton.value = 0;
+        }
+        if(acrophobieButton.value != 0){
+            acrophobieButton.value = 0;
+        }
+
         switch (selectedIndex)
         {
             case 0:
@@ -113,6 +120,13 @@ public class LevelSelectionMenu : NetworkBehaviour
     {
         int selectedIndex = acrophobieButton.value;
 
+        if(arachnophobieButton.value != 0){
+            arachnophobieButton.value = 0;
+        }
+        if(ophiophobieButton.value != 0){
+            ophiophobieButton.value = 0;
+        }
+        
         switch (selectedIndex)
         {
             case 0:
@@ -161,6 +175,13 @@ public class LevelSelectionMenu : NetworkBehaviour
     public void OphiophobieLevelSelection()
     {
         int selectedIndex = ophiophobieButton.value;
+
+        if(arachnophobieButton.value != 0){
+            arachnophobieButton.value = 0;
+        }
+        if(acrophobieButton.value != 0){
+            acrophobieButton.value = 0;
+        }
 
         switch (selectedIndex)
         {

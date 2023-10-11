@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6034641389400089405}
   - component: {fileID: 6103977545876586865}
   m_Layer: 0
-  m_Name: Audio Source Arachnophobie6
+  m_Name: Aracno2 Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 944bbf022ba8c9b43a476578087607c8, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 43c77f831bd0812439ca32c4eeafb69e, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
